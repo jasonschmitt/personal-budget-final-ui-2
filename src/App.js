@@ -12,7 +12,7 @@ function App() {
   let baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:8081"
-      : "https://personal-budget-api-api.herokuapp.com";
+      : "https://personal-budget-api.herokuapp.com";
 
   axios
     .get(`${baseURL}/test`)

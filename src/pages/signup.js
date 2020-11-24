@@ -24,7 +24,7 @@ class Signup extends React.Component {
     let baseURL =
       window.location.hostname === "localhost"
         ? "http://localhost:8081"
-        : "https://personal-budget-api-api.herokuapp.com";
+        : "https://personal-budget-api.herokuapp.com";
 
     const dataObj = {
       firstName: this.state.firstName,
