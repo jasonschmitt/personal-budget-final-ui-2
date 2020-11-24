@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Test from "./pages/test";
+import Home from "./pages/home";
 import TestTwo from "./pages/testtwo";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
@@ -28,7 +28,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Test />
+          <Home />
         </Route>
         <Route exact path="/testtwo">
           <TestTwo />
