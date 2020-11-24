@@ -21,6 +21,10 @@ class Signup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let baseURL =
+      window.location.hostname === "localhost"
+        ? "http://localhost:8081"
+        : "https://https://personal-budget-api-api.herokuapp.com";
 
     const dataObj = {
       firstName: this.state.firstName,
@@ -28,7 +32,7 @@ class Signup extends React.Component {
       password: this.state.password,
     };
     axios
-      .post("http://localhost:8081/auth/register", dataObj)
+      .post(`${baseURL}/auth/register`, dataObj)
       .then(function (response) {
         console.log(response);
       })

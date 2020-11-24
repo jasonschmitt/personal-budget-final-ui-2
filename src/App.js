@@ -9,8 +9,13 @@ import axios from "axios";
 
 function App() {
   console.log("app");
+  let baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:8081"
+      : "https://https://personal-budget-api-api.herokuapp.com";
+
   axios
-    .get(`http://localhost:8081/test`)
+    .get(`${baseURL}/test`)
     .then((response) => {
       console.log(response.data);
     })
