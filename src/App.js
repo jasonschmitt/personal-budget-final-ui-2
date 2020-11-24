@@ -4,6 +4,7 @@ import "./App.css";
 import Test from "./pages/test";
 import TestTwo from "./pages/testtwo";
 import Signup from "./pages/signup";
+import Login from "./pages/login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
       </Switch>
     </Router>
