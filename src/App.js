@@ -8,6 +8,7 @@ import Signup from "./pages/signup";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Logout from "./pages/logout";
+import Footer from "./components/footer/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import ProtectedRoute from "./ProtectedRoute";
@@ -105,6 +106,7 @@ class App extends React.Component {
             component={Logout}
           />
         </Switch>
+        <Footer />
       </Router>
     );
   }
