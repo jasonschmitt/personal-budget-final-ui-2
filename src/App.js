@@ -7,8 +7,10 @@ import TestTwo from "./pages/testtwo";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
+import Logout from "./pages/logout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
+import ProtectedRoute from "./ProtectedRoute";
 
 class App extends React.Component {
   state = {
@@ -95,6 +97,13 @@ class App extends React.Component {
           <Route exact path="/login">
             <Login />
           </Route>
+          <ProtectedRoute
+            exact={true}
+            path="/logout"
+            redirectLink="/login"
+            isLoggedIn={this.state.isLoggedIn}
+            component={Logout}
+          />
         </Switch>
       </Router>
     );
