@@ -7,6 +7,7 @@ import TestTwo from './pages/testtwo'
 import Signup from './pages/signup'
 import Login from './pages/login'
 import Dashboard from './pages/dashboard'
+import Account from './pages/account'
 import Logout from './pages/logout'
 import Footer from './components/footer/footer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -96,6 +97,14 @@ class App extends React.Component {
             isLoggedIn={this.state.isLoggedIn}
             globalState={this.state}
             component={Dashboard}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/account"
+            redirectLink="/login"
+            isLoggedIn={this.state.isLoggedIn}
+            globalState={this.state}
+            component={Account}
           />
           <Route exact path="/signup">
             <Signup />
