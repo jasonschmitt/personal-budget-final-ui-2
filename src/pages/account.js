@@ -39,9 +39,13 @@ class Account extends React.Component {
     console.log(user_id)
     console.log(token)
     console.log(dataObj)
+    let baseURL =
+      window.location.hostname === 'localhost'
+        ? 'http://localhost:8081'
+        : 'https://personal-budget-api.herokuapp.com'
 
     axios
-      .put(`http://localhost:8081/user/${user_id}`, dataObj, {
+      .put(`${baseURL}/user/${user_id}`, dataObj, {
         headers: headers,
       })
       .then((response) => {
