@@ -1,45 +1,45 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Nav from "./components/nav/nav";
-import Home from "./pages/home";
-import TestTwo from "./pages/testtwo";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
-import Dashboard from "./pages/dashboard";
-import Logout from "./pages/logout";
-import Footer from "./components/footer/footer";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
-import ProtectedRoute from "./ProtectedRoute";
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Nav from './components/nav/nav'
+import Home from './pages/home'
+import TestTwo from './pages/testtwo'
+import Signup from './pages/signup'
+import Login from './pages/login'
+import Dashboard from './pages/dashboard'
+import Logout from './pages/logout'
+import Footer from './components/footer/footer'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
+import ProtectedRoute from './ProtectedRoute'
 
 class App extends React.Component {
   state = {
     isLoggedIn: false,
     user: {},
-  };
+  }
 
   componentDidMount() {
-    console.log("it mounted");
-    this.checkLoggedInStatus();
+    console.log('it mounted')
+    this.checkLoggedInStatus()
   }
 
   checkLoggedInStatus() {
-    const isAuthenticated = localStorage.getItem("token");
+    const isAuthenticated = localStorage.getItem('token')
     if (isAuthenticated) {
-      this.setState({ isLoggedIn: true });
-      const token = localStorage.getItem("token");
-      const user_id = localStorage.getItem("_id");
+      this.setState({ isLoggedIn: true })
+      const token = localStorage.getItem('token')
+      const user_id = localStorage.getItem('_id')
 
       const headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `JWT ${token}`,
-      };
+      }
 
       let baseURL =
-        window.location.hostname === "localhost"
-          ? "http://localhost:8081"
-          : "https://personal-budget-api.herokuapp.com";
+        window.location.hostname === 'localhost'
+          ? 'http://localhost:8081'
+          : 'https://personal-budget-api.herokuapp.com'
 
       axios
         .get(`${baseURL}/user/${user_id}`, {
@@ -47,11 +47,11 @@ class App extends React.Component {
         })
         .then((response) => {
           // console.log(response.data)
-          this.setState({ user: response.data });
+          this.setState({ user: response.data })
         })
         .catch(function (error) {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
 
@@ -69,8 +69,8 @@ class App extends React.Component {
   //     console.log(error);
   //   });
   getData = () => {
-    console.log(this.state);
-  };
+    console.log(this.state)
+  }
   render() {
     return (
       <Router>
@@ -108,8 +108,8 @@ class App extends React.Component {
         </Switch>
         <Footer />
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App
