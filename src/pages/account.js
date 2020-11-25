@@ -41,7 +41,7 @@ class Account extends React.Component {
       })
       .then((response) => {
         console.log(response)
-        // location.reload()
+        window.location.href = '/dashboard'
       })
       .catch(function (error) {
         console.log(error)
@@ -52,7 +52,7 @@ class Account extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          First Name:
           <input
             type="text"
             value={this.state.firstName}
