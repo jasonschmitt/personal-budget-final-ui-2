@@ -10,15 +10,6 @@ class Account extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-    $(document).ready(function () {
-      setTimeout(function () {
-        M.updateTextFields()
-        $('input#input_text, textarea#textarea2').characterCounter()
-      }, 1000)
-    })
-  }
-
   handleChange(event) {
     console.log(event.target.value)
     this.setState({ firstName: event.target.value })
@@ -50,7 +41,7 @@ class Account extends React.Component {
       })
       .then((response) => {
         console.log(response)
-        location.reload()
+        // location.reload()
       })
       .catch(function (error) {
         console.log(error)
