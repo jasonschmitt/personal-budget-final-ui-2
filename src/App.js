@@ -9,42 +9,84 @@ import Dashboard from "./pages/dashboard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
-function App() {
-  console.log("app");
-  let baseURL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:8081"
-      : "https://personal-budget-api.herokuapp.com";
+class App extends React.Component {
+  state = {
+    isLoggedIn: false,
+    user: {},
+  };
 
-  axios
-    .get(`${baseURL}/test`)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/testtwo">
-          <TestTwo />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/signup">
-          <Signup />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  componentDidMount() {
+    console.log("it mounted");
+    this.checkLoggedInStatus();
+  }
+
+  checkLoggedInStatus() {
+    const isAuthenticated = localStorage.getItem("token");
+    if (isAuthenticated) {
+      this.setState({ isLoggedIn: true });
+      const token = localStorage.getItem("token");
+      const user_id = localStorage.getItem("_id");
+
+      const headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `JWT ${token}`,
+      };
+
+      let baseURL =
+        window.location.hostname === "localhost"
+          ? "http://localhost:8081"
+          : "https://personal-budget-api.herokuapp.com";
+
+      axios
+        .get(`${baseURL}/user/${user_id}`, {
+          headers: headers,
+        })
+        .then((response) => {
+          // console.log(response.data)
+          this.setState({ user: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
+  // let baseURL =
+  //   window.location.hostname === "localhost"
+  //     ? "http://localhost:8081"
+  //     : "https://personal-budget-api.herokuapp.com";
+
+  // axios
+  //   .get(`${baseURL}/test`)
+  //   .then((response) => {
+  //     console.log(response.data);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home isLoggedIn={this.state.isLoggedIn} globalState={this.state} />
+          </Route>
+          <Route exact path="/testtwo">
+            <TestTwo />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default App;
