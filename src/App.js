@@ -22,7 +22,15 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('it mounted')
+    this.localStorageLogout()
     this.checkLoggedInStatus()
+  }
+
+  localStorageLogout() {
+    setInterval(() => {
+      console.log('logging out! :)')
+      localStorage.clear()
+    }, 60000)
   }
 
   checkLoggedInStatus() {
