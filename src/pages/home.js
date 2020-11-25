@@ -2,13 +2,10 @@ import React from "react";
 
 class Home extends React.Component {
   render() {
-    // console.log(this.props);
     const { globalState } = this.props;
     const isLoggedIn = this.props.isLoggedIn;
     console.log(globalState.user);
     const user = globalState.user;
-    // const user = globalState.user
-
     return (
       <div>
         {isLoggedIn ? (

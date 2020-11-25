@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Nav from "./components/nav/nav";
 import Home from "./pages/home";
 import TestTwo from "./pages/testtwo";
 import Signup from "./pages/signup";
@@ -64,9 +65,20 @@ class App extends React.Component {
   //   .catch(function (error) {
   //     console.log(error);
   //   });
+  getData = () => {
+    console.log(this.state);
+  };
   render() {
     return (
       <Router>
+        <button onClick={this.getData}>get the state</button>
+        {this.state.isLoggedIn ? (
+          <div>is logged in: true</div>
+        ) : (
+          <div>is logged in: false</div>
+        )}
+
+        <Nav isLoggedIn={this.state.isLoggedIn} />
         <Switch>
           <Route exact path="/">
             <Home isLoggedIn={this.state.isLoggedIn} globalState={this.state} />
