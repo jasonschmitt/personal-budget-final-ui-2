@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 class Home extends React.Component {
   render() {
-    const { globalState } = this.props;
-    const isLoggedIn = this.props.isLoggedIn;
-    console.log(globalState.user);
-    const user = globalState.user;
+    const { globalState } = this.props
+    const isLoggedIn = this.props.isLoggedIn
+    // console.log(globalState.user);
+    const user = globalState.user
     return (
       <div>
         {isLoggedIn ? (
@@ -14,8 +14,8 @@ class Home extends React.Component {
           <div>user is NOT logged in</div>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

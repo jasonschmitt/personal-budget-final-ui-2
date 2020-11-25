@@ -89,9 +89,14 @@ class App extends React.Component {
           <Route exact path="/testtwo">
             <TestTwo />
           </Route>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
+          <ProtectedRoute
+            exact={true}
+            path="/dashboard"
+            redirectLink="/login"
+            isLoggedIn={this.state.isLoggedIn}
+            globalState={this.state}
+            component={Dashboard}
+          />
           <Route exact path="/signup">
             <Signup />
           </Route>

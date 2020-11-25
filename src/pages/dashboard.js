@@ -1,9 +1,12 @@
-import React from "react";
+import React from 'react'
 
 class Dashboard extends React.Component {
   render() {
-    return <div>dashboard page</div>;
+    // console.log(this.props)
+    const { globalState } = this.props.data
+    const user = globalState.user
+    return <div>dashboard page for {user.firstName}</div>
   }
 }
 
-export default Dashboard;
+export default Dashboard
