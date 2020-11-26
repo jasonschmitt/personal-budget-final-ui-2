@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react'
 // import logo from '../../images/jasonschmitt.jpeg'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import logo from './../../main_logo.png'
 
 class Nav extends React.Component {
   componentDidMount() {
-    const $ = window.jQuery;
+    const $ = window.jQuery
     $(document).ready(function () {
-      $(".sidenav").sidenav();
-    });
+      $('.sidenav').sidenav()
+    })
   }
 
   render() {
     // console.log(this.props)
-    const isLoggedIn = this.props.isLoggedIn;
+    const isLoggedIn = this.props.isLoggedIn
     return (
       <div>
         {isLoggedIn ? (
@@ -90,7 +91,7 @@ class Nav extends React.Component {
             <nav>
               <div className="nav-wrapper">
                 <a href="/" className="brand-logo">
-                  Logo
+                  <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <a
                   href="/"
@@ -163,8 +164,8 @@ class Nav extends React.Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default Nav;
+export default Nav
