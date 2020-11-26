@@ -21,7 +21,7 @@ class Nav extends React.Component {
             <nav>
               <div className="nav-wrapper">
                 <a href="/" className="brand-logo">
-                  Logo
+                  <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <a
                   href="/"
