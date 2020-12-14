@@ -1,4 +1,6 @@
 import React from 'react'
+import ChartOne from '../components/chartOne/chartOne'
+import ChartTwo from '../components/chartTwo/chartTwo'
 
 class Dashboard extends React.Component {
   render() {
@@ -9,6 +11,8 @@ class Dashboard extends React.Component {
       <div>
         <div>dashboard page for {user.firstName}</div>
         <div>display charts and data here</div>
+        <ChartOne />
+        <ChartTwo />
         <div>create budget</div>
         <div>configure budget</div>
       </div>
