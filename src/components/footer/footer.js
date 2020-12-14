@@ -42,7 +42,7 @@ class Footer extends React.Component {
         </div>
         <div className="footer-copyright">
           <div className="container">
-            © 2014 Copyright Text
+            © 2020 ITIS 5166 - UNC Charlotte
             <a className="grey-text text-lighten-4 right" href="#!">
               More Links
             </a>
