@@ -14,6 +14,7 @@ import Modal from './components/modal/modal'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 import ProtectedRoute from './ProtectedRoute'
+import M from 'materialize-css'
 
 class App extends React.Component {
   state = {
@@ -42,12 +43,48 @@ class App extends React.Component {
     // console.log(expired)
     // console.log(isExpired)
     // console.log(expired - isExpired)
+    const that = this
     if (expired != null) {
       if (isExpired > expired) {
         console.log('this token is expired')
-        this.localStorageLogout()
+        setTimeout(() => {
+          that.localStorageLogout()
+        }, 3000)
       } else if (expired - isExpired < 10000) {
         console.log('SHOW MODAL TO STAY LOGGED IN')
+        if (expired - isExpired >= 9000) {
+          const options = {
+            onOpenStart: () => {
+              console.log('Open Start')
+            },
+            onOpenEnd: () => {
+              console.log('Open End')
+            },
+            onCloseStart: () => {
+              console.log('Close Start')
+              var expiration = Date.now()
+              var oneMinuteInMilliseconds = 60000
+              // console.log(expiration + oneMinuteInMilliseconds);
+              // console.log(expiration);
+              expiration = expiration + oneMinuteInMilliseconds
+              localStorage.setItem('expire', expiration)
+            },
+            onCloseEnd: () => {
+              console.log('Close End')
+            },
+            inDuration: 250,
+            outDuration: 250,
+            opacity: 0.5,
+            dismissible: false,
+            startingTop: '4%',
+            endingTop: '10%',
+          }
+          var Modalelem = document.querySelector('.modal')
+          var instance = M.Modal.init(Modalelem, options)
+          // if(instance.isOpen())
+          console.log(instance.isOpen)
+          instance.open()
+        }
       } else {
         console.log('this token is NOT expired')
       }
@@ -57,8 +94,7 @@ class App extends React.Component {
   localStorageLogout() {
     console.log('logging out! :)')
     localStorage.clear()
-    // history.replaceState(null, 'Login', '/')
-    window.location.reload()
+    window.location.href = '/login'
   }
 
   checkLoggedInStatus() {
@@ -157,6 +193,7 @@ class App extends React.Component {
           />
         </Switch>
         <Footer />
+        <Modal />
       </Router>
     )
   }
