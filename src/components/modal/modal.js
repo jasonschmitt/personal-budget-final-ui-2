@@ -60,15 +60,12 @@ class Modal extends Component {
                         If you want Fixed Footer Modal then add
                         modal-fixed-footer to the "modal" div*/}
           <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h4>Logout Warning, ARE YOU THERE?</h4>
+            <p>You are about to be logged out of your session</p>
           </div>
           <div className="modal-footer">
-            <a className="modal-close waves-effect waves-red btn-flat">
-              Disagree
-            </a>
-            <a className="modal-close waves-effect waves-green btn-flat">
-              Agree
+            <a className="modal-close light-blue darken-4 white-text btn-flat">
+              Stay Logged In
             </a>
           </div>
         </div>

@@ -38,21 +38,23 @@ class App extends React.Component {
   checkExpirationInLocalStorage() {
     // console.log('checkExpirationInLocalStorage');
     const expired = localStorage.getItem('expire')
+    const token = localStorage.getItem('token')
+    const _id = localStorage.getItem('_id')
     const isExpired = Date.now()
 
     // console.log(expired)
     // console.log(isExpired)
     // console.log(expired - isExpired)
     const that = this
-    if (expired != null) {
+    if (expired != null && token != null && _id != null) {
       if (isExpired > expired) {
         console.log('this token is expired')
         setTimeout(() => {
           that.localStorageLogout()
         }, 3000)
-      } else if (expired - isExpired < 10000) {
+      } else if (expired - isExpired < 20000) {
         console.log('SHOW MODAL TO STAY LOGGED IN')
-        if (expired - isExpired >= 9000) {
+        if (expired - isExpired >= 19000) {
           const options = {
             onOpenStart: () => {
               console.log('Open Start')
