@@ -42,7 +42,7 @@ class Modal extends Component {
     return (
       <div>
         <a
-          className="waves-effect waves-light btn modal-trigger"
+          className="waves-effect waves-light btn modal-trigger hide"
           data-target="modal1"
         >
           Modal
