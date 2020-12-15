@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard'
 import Account from './pages/account'
 import Logout from './pages/logout'
 import Footer from './components/footer/footer'
+import Modal from './components/modal/modal'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 import ProtectedRoute from './ProtectedRoute'
@@ -23,14 +24,41 @@ class App extends React.Component {
   componentDidMount() {
     console.log('it mounted')
     // this.localStorageLogout()
+    this.checkIfUserShouldBeLoggedOut()
     this.checkLoggedInStatus()
   }
 
-  localStorageLogout() {
+  checkIfUserShouldBeLoggedOut() {
     setInterval(() => {
-      console.log('logging out! :)')
-      localStorage.clear()
-    }, 60000)
+      this.checkExpirationInLocalStorage()
+    }, 1000)
+  }
+
+  checkExpirationInLocalStorage() {
+    // console.log('checkExpirationInLocalStorage');
+    const expired = localStorage.getItem('expire')
+    const isExpired = Date.now()
+
+    // console.log(expired)
+    // console.log(isExpired)
+    // console.log(expired - isExpired)
+    if (expired != null) {
+      if (isExpired > expired) {
+        console.log('this token is expired')
+        this.localStorageLogout()
+      } else if (expired - isExpired < 10000) {
+        console.log('SHOW MODAL TO STAY LOGGED IN')
+      } else {
+        console.log('this token is NOT expired')
+      }
+    }
+  }
+
+  localStorageLogout() {
+    console.log('logging out! :)')
+    localStorage.clear()
+    // history.replaceState(null, 'Login', '/')
+    window.location.reload()
   }
 
   checkLoggedInStatus() {
