@@ -7,8 +7,9 @@ class CreateBudget extends React.Component {
 
     this.state = {
       isCreatingBudget: false,
-      color: '#000',
-      color2: '#000',
+      color: '',
+      color2: '',
+      labels: [],
     }
 
     // this.delta = this.delta.bind(this);
@@ -31,6 +32,15 @@ class CreateBudget extends React.Component {
     // console.log(dataObj)
     this.setState({ [colorNumber]: color })
 
+    console.log(this.state)
+  }
+
+  setLabel = (label) => {
+    console.log('set label')
+  }
+
+  submit = () => {
+    console.log('submit to database')
     console.log(this.state)
   }
 
@@ -76,6 +86,9 @@ class CreateBudget extends React.Component {
                   />
                 </div>
               </div>
+              <a className="btn" onClick={this.submit}>
+                Create budget
+              </a>
             </form>
           </div>
         ) : (
