@@ -13,12 +13,12 @@ class ChartOne extends React.Component {
       datasets: [
         {
           data: [10, 20, 30],
-          backgroundColor: ['red', 'yellow', 'blue'],
+          backgroundColor: ['red', 'rgb(15,117,67)', 'rgb(24,47,234)'],
         },
       ],
 
       // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: ['Red', 'Yellow', 'Blue'],
+      labels: ['Red', 'Yellow', 'rgb(24,47,234)'],
     }
     var myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',

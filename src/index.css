@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiInput-underline:before {
+  border-bottom: none !important;
+}
+
+.MuiFormControl-root {
+  padding-left: 40px !important;
+  margin-bottom: -10px !important;
+}
