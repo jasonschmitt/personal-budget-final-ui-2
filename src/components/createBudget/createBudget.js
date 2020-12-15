@@ -7,8 +7,6 @@ class CreateBudget extends React.Component {
 
     this.state = {
       isCreatingBudget: false,
-      color: '',
-      color2: '',
       labels: [],
     }
 
@@ -35,8 +33,11 @@ class CreateBudget extends React.Component {
     console.log(this.state)
   }
 
-  setLabel = (label) => {
+  setLabel = (e) => {
     console.log('set label')
+    // console.log(e.target.value)
+    // console.log(e.target.name)
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   submit = () => {
@@ -54,7 +55,13 @@ class CreateBudget extends React.Component {
               <div className="row">
                 <div className="input-field col s2">
                   <i className="material-icons prefix">subject</i>
-                  <input id="icon_prefix" type="text" className="validate" />
+                  <input
+                    id="icon_prefix"
+                    type="text"
+                    className="validate"
+                    name="label1"
+                    onChange={this.setLabel}
+                  />
                   <label htmlFor="icon_prefix">Label Name</label>
                 </div>
 
@@ -63,8 +70,8 @@ class CreateBudget extends React.Component {
                   <ColorPicker
                     name="color"
                     defaultValue="Color"
-                    value={this.state.color}
-                    onChange={(color) => this.setColor('color', color)}
+                    value={this.state.color1}
+                    onChange={(color) => this.setColor('color1', color)}
                   />
                 </div>
               </div>
@@ -72,7 +79,13 @@ class CreateBudget extends React.Component {
               <div className="row">
                 <div className="input-field col s2">
                   <i className="material-icons prefix">subject</i>
-                  <input id="icon_prefix2" type="text" className="validate" />
+                  <input
+                    id="icon_prefix2"
+                    type="text"
+                    className="validate"
+                    name="label2"
+                    onChange={this.setLabel}
+                  />
                   <label htmlFor="icon_prefix2">Label Name</label>
                 </div>
 
