@@ -7,6 +7,7 @@ import TestTwo from './pages/testtwo'
 import Signup from './pages/signup'
 import Login from './pages/login'
 import Dashboard from './pages/dashboard'
+import CreateBudget from './pages/createBudget'
 import Account from './pages/account'
 import Logout from './pages/logout'
 import Footer from './components/footer/footer'
@@ -171,6 +172,14 @@ class App extends React.Component {
             isLoggedIn={this.state.isLoggedIn}
             globalState={this.state}
             component={Dashboard}
+          />
+          <ProtectedRoute
+            exact={true}
+            path="/createBudget"
+            redirectLink="/login"
+            isLoggedIn={this.state.isLoggedIn}
+            globalState={this.state}
+            component={CreateBudget}
           />
           <ProtectedRoute
             exact={true}
