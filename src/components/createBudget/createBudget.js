@@ -15,14 +15,12 @@ class CreateBudget extends React.Component {
 
     // this.delta = this.delta.bind(this);
   }
-
+  //
   componentDidMount() {
     console.log('create budget mounted')
-    let that = this
-    window.onload = function () {
-      console.log('we here')
-      that.renderChart()
-    }
+    setTimeout(() => {
+      this.renderChart()
+    }, 100)
   }
 
   createBudget = () => {
@@ -33,7 +31,7 @@ class CreateBudget extends React.Component {
   }
 
   setColor = (colorNumber, color) => {
-    console.log(`set ${colorNumber} color to ${color}`)
+    // console.log(`set ${colorNumber} color to ${color}`)
     // const dataObj = { [colorNumber]: color }
     // console.log(dataObj)
     this.setState({ [colorNumber]: color })
@@ -83,22 +81,37 @@ class CreateBudget extends React.Component {
     setTimeout(() => {
       console.log(this.state)
       this.renderChart()
-    }, 2000)
+    }, 500)
   }
 
   renderChart() {
     console.log('rendering chart....')
+    console.log(this.state.backgroundColor.length)
+    let backgroundColor =
+      this.state.backgroundColor.length === 0
+        ? ['green', 'yellow', 'red']
+        : this.state.backgroundColor
+
+    let values = this.state.values.length === 0 ? [1, 2, 3] : this.state.values
+
+    let labels =
+      this.state.labels.length === 0
+        ? ['first', 'second', 'third']
+        : this.state.labels
+
+    console.log(backgroundColor)
+    // let i = nightmode === true ? 1 : 0
     var ctx = document.getElementById('myChart').getContext('2d')
     var data = {
       datasets: [
         {
-          data: this.state.values,
-          backgroundColor: this.state.backgroundColor,
+          data: values,
+          backgroundColor: backgroundColor,
         },
       ],
 
       // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: this.state.labels,
+      labels: labels,
     }
     var myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
@@ -150,34 +163,10 @@ class CreateBudget extends React.Component {
                   onChange={(color) => this.setColor('color', color)}
                 />
               </div>
-              <a className="btn-floating btn-large red" onClick={this.addLabel}>
-                <i className="material-icons">add</i>
+              <a className="btn-small orange" onClick={this.addLabel}>
+                <i className="material-icons left">add</i>Add to chart
               </a>
             </div>
-
-            {/* <div className="row">
-                <div className="input-field col s2">
-                  <i className="material-icons prefix">subject</i>
-                  <input
-                    id="icon_prefix3"
-                    type="text"
-                    className="validate"
-                    name="label2"
-                    onChange={this.setLabel}
-                  />
-                  <label htmlFor="icon_prefix3">Label Name</label>
-                </div>
-
-                <div className="input-field col s2">
-                  <i className="material-icons prefix">colorize</i>
-                  <ColorPicker
-                    name="color"
-                    defaultValue="Color"
-                    value={this.state.color2}
-                    onChange={(color) => this.setColor('color2', color)}
-                  />
-                </div>
-              </div> */}
             <section className="chartOne">
               <canvas id="myChart" width="200" height="200"></canvas>
             </section>
