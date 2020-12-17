@@ -12,11 +12,8 @@ class Dashboard extends React.Component {
     return (
       <div>
         <div>dashboard page for {user.firstName}</div>
-        <div>display charts and data here</div>
         <Link to="/createBudget">Create a new budget</Link>
         <ChartOne />
-        <ChartTwo />
-        <div>configure budget</div>
       </div>
     )
   }

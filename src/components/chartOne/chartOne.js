@@ -26,7 +26,7 @@ class ChartOne extends React.Component {
   }
 
   renderChart(apiResponse) {
-    console.log(apiResponse)
+    // console.log(apiResponse)
     var ctx = document.getElementById('myChart').getContext('2d')
     var data = {
       datasets: [

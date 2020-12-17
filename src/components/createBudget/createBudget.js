@@ -99,6 +99,9 @@ class CreateBudget extends React.Component {
     this.setState({ backgroundColor })
     this.setState({ values })
 
+    document.getElementById('label').value = ''
+    document.getElementById('value').value = ''
+
     setTimeout(() => {
       console.log(this.state)
       this.renderChart()
