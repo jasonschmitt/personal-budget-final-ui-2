@@ -1,6 +1,7 @@
 import React from 'react'
 import ColorPicker from 'material-ui-color-picker'
 import Chart from 'chart.js'
+import axios from 'axios'
 
 class CreateBudget extends React.Component {
   constructor(props) {
@@ -55,8 +56,28 @@ class CreateBudget extends React.Component {
 
   submit = () => {
     console.log('submit to database')
-    const labelsToLoop = []
+    // const labelsToLoop = []
     console.log(this.state)
+
+    let baseURL =
+      window.location.hostname === 'localhost'
+        ? 'http://localhost:8081'
+        : 'https://personal-budget-api.herokuapp.com'
+
+    const dataObj = {
+      user_id: localStorage.getItem('_id'),
+      labels: this.state.labels,
+      values: this.state.values,
+      backgroundColor: this.state.backgroundColor,
+    }
+    axios
+      .post(`${baseURL}/budget`, dataObj)
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   addLabel = () => {
@@ -99,8 +120,6 @@ class CreateBudget extends React.Component {
         ? ['first', 'second', 'third']
         : this.state.labels
 
-    console.log(backgroundColor)
-    // let i = nightmode === true ? 1 : 0
     var ctx = document.getElementById('myChart').getContext('2d')
     var data = {
       datasets: [
