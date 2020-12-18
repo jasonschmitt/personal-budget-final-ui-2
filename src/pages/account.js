@@ -50,17 +50,27 @@ class Account extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <section>
+        <div>update your information:</div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            First Name:
+            <input
+              type="text"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+            />
+          </label>
+          <button
+            className="btn yellow accent-4 black-text waves-effect waves-light"
+            type="submit"
+            name="action"
+          >
+            Submit
+            <i className="material-icons right">send</i>
+          </button>
+        </form>
+      </section>
     )
   }
 }
