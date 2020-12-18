@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 import Nav from './components/nav/nav'
 import Home from './pages/home'
@@ -131,31 +130,18 @@ class App extends React.Component {
     }
   }
 
-  // let baseURL =
-  //   window.location.hostname === "localhost"
-  //     ? "http://localhost:8081"
-  //     : "https://personal-budget-api.herokuapp.com";
-
-  // axios
-  //   .get(`${baseURL}/test`)
-  //   .then((response) => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
   getData = () => {
     console.log(this.state)
   }
   render() {
     return (
       <Router>
-        <button onClick={this.getData}>get the state</button>
+        {/* <button onClick={this.getData}>get the state</button>
         {this.state.isLoggedIn ? (
           <div>is logged in: true</div>
         ) : (
           <div>is logged in: false</div>
-        )}
+        )} */}
 
         <Nav isLoggedIn={this.state.isLoggedIn} />
         <Switch>

@@ -77,7 +77,11 @@ class Login extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <button className="btn" type="submit" name="action">
+        <button
+          className="btn yellow accent-4 black-text"
+          type="submit"
+          name="action"
+        >
           Submit
           <i className="material-icons right">send</i>
         </button>

@@ -83,7 +83,7 @@ class Signup extends React.Component {
           />
         </label>
         <button
-          className="btn waves-effect waves-light"
+          className="btn yellow accent-4 black-text waves-effect waves-light"
           type="submit"
           name="action"
         >

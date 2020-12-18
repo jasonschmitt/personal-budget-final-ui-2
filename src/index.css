@@ -17,6 +17,10 @@ nav,
   background-color: green !important;
 }
 
+.page-footer {
+  margin-top: 20px;
+}
+
 .MuiInput-underline:before {
   border-bottom: none !important;
 }

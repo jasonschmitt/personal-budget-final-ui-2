@@ -81,7 +81,7 @@ class ChartOne extends React.Component {
 
                 <a
                   href="/createBudget"
-                  className="btn-floating btn-large cyan pulse"
+                  className="btn-floating btn-large yellow accent-4 black-text pulse"
                 >
                   <i className="material-icons">edit</i>
                 </a>
