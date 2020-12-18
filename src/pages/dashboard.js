@@ -12,7 +12,6 @@ class Dashboard extends React.Component {
     return (
       <div>
         <div>dashboard page for {user.firstName}</div>
-        <Link to="/createBudget">Create a new budget</Link>
         <ChartOne />
       </div>
     )
