@@ -12,9 +12,11 @@ class ChartOne extends React.Component {
         ? 'http://localhost:8081'
         : 'https://personal-budget-api.herokuapp.com'
 
+    const _id = localStorage.getItem('_id')
+    console.log(_id)
     const that = this
     axios
-      .get(`${baseURL}/budget`)
+      .get(`${baseURL}/budget/${_id}`)
       .then(function (response) {
         // console.log(response.data)
         // pass data to renderChart function
@@ -26,7 +28,7 @@ class ChartOne extends React.Component {
   }
 
   renderChart(apiResponse) {
-    // console.log(apiResponse)
+    console.log(apiResponse)
     var ctx = document.getElementById('myChart').getContext('2d')
     var data = {
       datasets: [
