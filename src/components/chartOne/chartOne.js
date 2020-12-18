@@ -3,6 +3,13 @@ import Chart from 'chart.js'
 import axios from 'axios'
 
 class ChartOne extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      hasBudgets: false,
+    }
+  }
   componentDidMount() {
     console.log('chart one mounted')
     // get data with axios request
@@ -29,31 +36,59 @@ class ChartOne extends React.Component {
 
   renderChart(apiResponse) {
     console.log(apiResponse)
-    var ctx = document.getElementById('myChart').getContext('2d')
-    var data = {
-      datasets: [
-        {
-          data: apiResponse[0].values,
-          backgroundColor: apiResponse[0].backgroundColor,
-        },
-      ],
+    if (apiResponse[0].values) {
+      this.setState({ hasBudgets: true })
+      var ctx = document.getElementById('myChart').getContext('2d')
+      var data = {
+        datasets: [
+          {
+            data: apiResponse[0].values,
+            backgroundColor: apiResponse[0].backgroundColor,
+          },
+        ],
 
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: apiResponse[0].labels,
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: apiResponse[0].labels,
+      }
+      var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+          maintainAspectRatio: false,
+        },
+      })
     }
-    var myDoughnutChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: data,
-      options: {
-        maintainAspectRatio: false,
-      },
-    })
   }
 
   render() {
+    const hasBudgets = this.state.hasBudgets
+    const pr20 = {
+      paddingRight: '20px',
+    }
     return (
-      <section className="chartOne">
-        <canvas id="myChart" width="200" height="200"></canvas>
+      <section>
+        {hasBudgets ? (
+          <section className="chartOne">
+            <canvas id="myChart" width="200" height="200"></canvas>
+          </section>
+        ) : (
+          <section>
+            <div className="row">
+              <div className="col s12 center-align">
+                <span style={pr20}>
+                  Your charts will display here when you create a chart!
+                </span>
+
+                <a
+                  href="/createBudget"
+                  className="btn-floating btn-large cyan pulse"
+                >
+                  <i className="material-icons">edit</i>
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
       </section>
     )
   }
