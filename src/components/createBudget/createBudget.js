@@ -206,7 +206,10 @@ class CreateBudget extends React.Component {
                 CREATE THIS BUDGET!
               </a>
             ) : (
-              <div>enter data to create a budget</div>
+              <div>
+                Enter data to visualize your chart before you create your budget
+                chart!
+              </div>
             )}
           </form>
         </div>

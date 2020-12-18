@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+nav,
+.page-footer {
+  background-color: green !important;
+}
+
 .MuiInput-underline:before {
   border-bottom: none !important;
 }
