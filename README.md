@@ -8,15 +8,18 @@
 
 ## homepage - NOT logged in
 
-<img src="public/homepage-loggedout.png">
+- unauthenticated route
+  <img src="public/homepage-loggedout.png">
 
 ## signup page
 
-<img src="public/signup.png">
+- unauthenticated route
+  <img src="public/signup.png">
 
 ## login page
 
-<img src="public/login.png">
+- unauthenticated route
+  <img src="public/login.png">
 
 ## local storage
 
@@ -25,20 +28,24 @@
 
 ## homepage - logged in
 
+- unauthenticated route
   <img src="public/homepage-loggedin.png">
 
 ## account page
 
+- authenticated route
 - user can update their account
   <img src="public/updateprofile.png">
 
 ## dashboard page
 
+- authenticated route
 - if a user has not yet entered a budget, this view is shown where users can click the button to create a budget chart
   <img src="public/dashboard-no-chart.png">
 
 ## create budget page
 
+- authenticated route
 - users can create a budget here
   <img src="public/createbudget.png">
 
@@ -49,6 +56,7 @@
 
 ## create budget page
 
+- authenticated route
 - once a user has entered in a value, an example of what their budget will look like will render onto the page
   <img src="public/createbudgetexample.png">
 
