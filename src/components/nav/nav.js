@@ -11,6 +11,12 @@ class Nav extends React.Component {
     })
   }
 
+  logout(event) {
+    event.preventDefault()
+    localStorage.clear()
+    window.location.href = '/login'
+  }
+
   render() {
     // console.log(this.props)
     const isLoggedIn = this.props.isLoggedIn
@@ -38,7 +44,9 @@ class Nav extends React.Component {
                     <Link to="/account">Account</Link>
                   </li>
                   <li>
-                    <Link to="/logout">Logout</Link>
+                    <Link to="/logout" onClick={this.logout}>
+                      Logout
+                    </Link>
                   </li>
                 </ul>
               </div>
