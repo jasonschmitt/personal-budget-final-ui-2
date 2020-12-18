@@ -6,6 +6,14 @@
 
 - Run `npm install` in the root directory and run `npm start` and the application will launch at `localhost:3000`
 
+## Live Demo
+
+This project is hosted with heroku. Both the UI and API instance have to be up and running in heroku (since this is free, the servers may take ~15 seconds to awaken when urls are first hit)
+
+navigate to [https://personal-budget-ui-2.herokuapp.com/](https://personal-budget-ui-2.herokuapp.com/) to see this application live
+
+you can check to ensure the backend api is being served up as well when navigating to [https://personal-budget-api.herokuapp.com/test](https://personal-budget-api.herokuapp.com/test)
+
 ## homepage - NOT logged in
 
 - unauthenticated route
