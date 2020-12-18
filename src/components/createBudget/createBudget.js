@@ -28,7 +28,6 @@ class CreateBudget extends React.Component {
     // do something
     console.log('create budget')
     console.log(this.state)
-    this.setState({ isCreatingBudget: true })
   }
 
   setColor = (colorNumber, color) => {
@@ -105,6 +104,7 @@ class CreateBudget extends React.Component {
     setTimeout(() => {
       console.log(this.state)
       this.renderChart()
+      this.setState({ isCreatingBudget: true })
     }, 500)
   }
 
@@ -146,11 +146,25 @@ class CreateBudget extends React.Component {
 
   render() {
     let isCreatingBudget = this.state.isCreatingBudget
+    let mt20 = {
+      marginTop: '20px',
+    }
     return (
       <section className="create-budget">
         <div className="row">
           <form className="col s12">
             <div className="row">
+              <div className="input-field col s2">
+                <i className="material-icons prefix">colorize</i>
+                <ColorPicker
+                  id="color"
+                  name="color"
+                  defaultValue="Color"
+                  value={this.state.color}
+                  onChange={(color) => this.setColor('color', color)}
+                />
+              </div>
+
               <div className="input-field col s2">
                 <i className="material-icons prefix">subject</i>
                 <input
@@ -175,26 +189,25 @@ class CreateBudget extends React.Component {
                 <label htmlFor="value">Value</label>
               </div>
 
-              <div className="input-field col s2">
-                <i className="material-icons prefix">colorize</i>
-                <ColorPicker
-                  id="color"
-                  name="color"
-                  defaultValue="Color"
-                  value={this.state.color}
-                  onChange={(color) => this.setColor('color', color)}
-                />
-              </div>
-              <a className="btn-small orange" onClick={this.addLabel}>
-                <i className="material-icons left">add</i>Add to chart
+              <a
+                className="btn-small orange pulse"
+                style={mt20}
+                onClick={this.addLabel}
+              >
+                <i className="material-icons left">add</i>
+                Add to chart
               </a>
             </div>
             <section className="chartOne">
               <canvas id="myChart" width="200" height="200"></canvas>
             </section>
-            <a className="btn red" onClick={this.submit}>
-              CREATE THIS BUDGET!
-            </a>
+            {isCreatingBudget ? (
+              <a className="btn red pulse" onClick={this.submit}>
+                CREATE THIS BUDGET!
+              </a>
+            ) : (
+              <div>enter data to create a budget</div>
+            )}
           </form>
         </div>
       </section>
